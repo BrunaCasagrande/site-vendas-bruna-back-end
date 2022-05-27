@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,12 +31,12 @@ import lombok.RequiredArgsConstructor;
 public class ServicoPrestadoController {
 
 	private final ClienteRepository clienteReository;
-	private final ServicoPrestadoRepository repository;
+	private final ServicoPrestadoRepository servicoRepository;
 	private final BigDecimalConverter bigDecimalConverter;
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.OK)
-	public ServicoPrestado salvar(@RequestBody ServicoPrestadoDTO dto) {
+	public ServicoPrestado salvar(@RequestBody @Valid ServicoPrestadoDTO dto) {
 		LocalDate data = LocalDate.parse(dto.getData(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 		Integer idCliente = dto.getIdCliente();
 		
@@ -51,15 +53,15 @@ public class ServicoPrestadoController {
 		servicoPrestado.setCliente(cliente);
 		servicoPrestado.setValor(bigDecimalConverter.converter(dto.getPreco()));
 		
-		return repository.save(servicoPrestado);
+		return servicoRepository.save(servicoPrestado);
 		
 	}
 	
 	@GetMapping
 	public List<ServicoPrestado> pesquisar(
-			@RequestParam(value = "nome", required = false)String nome,
+			@RequestParam(value = "nome", required = false, defaultValue = "")String nome,
 			@RequestParam(value = "mes", required = false) Integer mes
 			){
-		return repository.findByNomeClienteAndMes(nome, mes);
+		return servicoRepository.findByNomeClienteAndMes("%" + nome + "%", mes);
 	}
 }
