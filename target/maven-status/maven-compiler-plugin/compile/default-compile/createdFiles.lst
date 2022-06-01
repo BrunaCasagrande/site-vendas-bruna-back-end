@@ -1,0 +1,17 @@
+com\brunacasagrande\clientes\rest\exception\ApiErrors.class
+com\brunacasagrande\clientes\model\entity\Cliente.class
+com\brunacasagrande\clientes\model\entity\Usuario.class
+com\brunacasagrande\clientes\service\UsuarioService.class
+com\brunacasagrande\clientes\rest\ApplicationControllerAdvice.class
+com\brunacasagrande\clientes\util\BigDecimalConverter.class
+com\brunacasagrande\clientes\exception\UsuarioCadastradoException.class
+com\brunacasagrande\clientes\model\entity\ServicoPrestado.class
+com\brunacasagrande\clientes\rest\UsuarioController.class
+com\brunacasagrande\clientes\config\InternacionalizacaoConfig.class
+com\brunacasagrande\clientes\config\ResourceServerConfig.class
+com\brunacasagrande\clientes\repository\ClienteRepository.class
+com\brunacasagrande\clientes\model\entity\Cliente$ClienteBuilder.class
+com\brunacasagrande\clientes\repository\ServicoPrestadoRepository.class
+com\brunacasagrande\clientes\repository\UsuarioRepository.class
+com\brunacasagrande\clientes\Clientes.class
+com\brunacasagrande\clientes\config\AuthorizationServerConfig.class
